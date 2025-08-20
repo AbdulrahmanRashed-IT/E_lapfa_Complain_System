@@ -1,0 +1,277 @@
+:root {
+  --bg: #fff7fb;
+  --card: #fff;
+  --text: #2b2136;
+  --accent: #d6336c;
+  --accent2: #ff7ab6;
+}
+[data-theme="dark"] {
+  --bg: #0b0b10;
+  --card: #0f1114;
+  --text: #fdeff6;
+  --accent: #ff6fa3;
+  --accent2: #c0486e;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+    "Helvetica Neue", Arial;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(182, 77, 115, 0.08);
+}
+.auth {
+  width: 380px;
+  text-align: left;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+.auth h1 {
+  margin: 0 0 1rem;
+  color: var(--accent);
+}
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.tabs button {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #f5e6ec;
+  background: transparent;
+  cursor: pointer;
+}
+.tabs button.active {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: #fff;
+  border-color: transparent;
+}
+label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #f1dbe3;
+  background: transparent;
+}
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(214, 51, 108, 0.18);
+  transform: translateY(0);
+  transition: transform 0.18s;
+}
+.btn:hover {
+  transform: translateY(-3px);
+}
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.success {
+  background: #ecfccb;
+  color: #365314;
+  padding: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+/* layout */
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+.sidenav {
+  width: 240px;
+  background: var(--card);
+  padding: 1rem;
+  border-right: 1px solid rgba(0, 0, 0, 0.04);
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+}
+.sidenav .brand {
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+.sidenav nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.sidenav a {
+  padding: 0.6rem;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+}
+.sidenav a.active {
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  color: white;
+}
+.content {
+  margin-left: 260px;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  padding: 0.6rem;
+  border-bottom: 1px solid #f1dbe3;
+  text-align: left;
+}
+.chatbox {
+  height: 300px;
+  overflow: auto;
+  padding: 0.5rem;
+  border: 1px solid #f1dbe3;
+  border-radius: 8px;
+  background: var(--card);
+}
+.msg {
+  padding: 0.4rem;
+  margin: 0.3rem 0;
+  border-radius: 6px;
+}
+.msg.user {
+  background: linear-gradient(90deg, #fff0f6, #ffe7f0);
+}
+.msg.admin {
+  background: linear-gradient(90deg, #fff7f0, #fff0f3);
+}
+
+/* whatsapp FAB */
+.whatsapp-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  background: #ff4d88;
+  color: white;
+  padding: 12px 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 8px 28px rgba(214, 51, 108, 0.25);
+}
+@media (max-width: 800px) {
+  .sidenav {
+    position: fixed;
+    left: -100%;
+    transition: left 0.25s;
+  }
+  .sidenav.open {
+    left: 0;
+  }
+  .content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+}
+/* Mobile menu toggle button */
+.menu-toggle {
+  display: none; /* Hidden by default on desktop */
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+}
+
+/* Overlay for when menu is open */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Close button inside sidenav */
+.sidenav .close-btn {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-left: auto;
+  margin-bottom: 1rem;
+}
+
+/* Mobile styles */
+@media (max-width: 800px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .menu-overlay.active {
+    display: block;
+  }
+  
+  .sidenav {
+    left: -240px; /* Start off-screen */
+    transition: left 0.3s ease;
+  }
+  
+  .sidenav.open {
+    left: 0;
+  }
+  
+  .sidenav .close-btn {
+    display: block;
+  }
+  
+  .content {
+    margin-left: 0;
+  }
+}
